@@ -1,0 +1,39 @@
+.nav_btn {
+    background: none;
+    border: none;
+    font-size: 2rem;
+}
+
+#blank_card {
+    min-height: 20rem;
+    border-bottom: none;
+}
+
+#flex_card {
+    max-width: 18rem;
+    min-height: 16rem;
+}
+
+.razmetka {
+    width: 100%;
+}
+
+.form-check-input:checked {
+    background-color: rgb(var(--bs-warning-rgb)) !important;
+    border-color: rgb(var(--bs-warning-rgb)) !important;
+}
+
+.card:has(.form-check-input:checked) {
+    opacity: .5;
+    transition: 0.5s;
+
+&
+:hover {
+    opacity: 1;
+}
+
+}
+
+textarea {
+    resize: none;
+}

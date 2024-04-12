@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    {% if not object_list %}
+        <h1 class="text-center">Не найдено</h1>
+    {% else %}
+        <div class="row row-cols-4 my-3 razmetka">
+            {% for item in object_list %}
+                <div class="col d-flex justify-content-center">
+                    <div id="flex_card" class="card bg-warning-subtle mb-3 flex-fill">
+                        <div class="card-header d-flex justify-content-between align-items-center gap-2">
+                            <div>
+                                <input data-id="{{ item.id }}" class="form-check-input checkbox_complete"
+                                       type="checkbox"
+                                       value="" id="flexCheckDefault"
+                                        {% if item.complete == True %}
+                                       checked
+                                        {% endif %}
+                                >
+                                <span>{{ item.name }}</span>
+                                <div class="text-secondary"><small>{{ item.created }}</small></div>
+                                <div class="text-secondary"><small>{{ item.end_task_date }}</small></div>
+                            </div>
+                            <div class="d-flex gap-2">
+                                <a href="{% url 'main:edit_task' item.id %}" class="btn btn-text p-0">
+                                    <i class="bi bi-pencil"></i>
+                                </a>
+                                <a href="{% url 'main:delete_task' item.id %}" class="btn btn-text p-0">
+                                    <i class="bi bi-x"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">{{ item.description }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endblock %}
